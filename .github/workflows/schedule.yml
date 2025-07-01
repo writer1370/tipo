@@ -9,11 +9,11 @@ jobs:
   build-and-run:
     runs-on: ubuntu-latest
 
-  env:
-    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-    NOTION_DATABASE_ID: ${{ secrets.DATABASE_ID }}
-    KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
-    KAKAO_ADMIN_KEY: ${{ secrets.KAKAO_ADMIN_KEY }}
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      NOTION_DATABASE_ID: ${{ secrets.DATABASE_ID }}
+      KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
+      KAKAO_ADMIN_KEY: ${{ secrets.KAKAO_ADMIN_KEY }}
 
     steps:
       - name: Checkout source
