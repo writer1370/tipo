@@ -1,0 +1,30 @@
+name: Run Java Main
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 매일 오후 9시 (KST)
+  workflow_dispatch:  # 수동 실행도 가능하게 함
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+  env:
+    NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+    NOTION_DATABASE_ID: ${{ secrets.DATABASE_ID }}
+    KAKAO_API_KEY: ${{ secrets.KAKAO_API_KEY }}
+    KAKAO_ADMIN_KEY: ${{ secrets.KAKAO_ADMIN_KEY }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Run MainApplication
+        run: ./gradlew run
+

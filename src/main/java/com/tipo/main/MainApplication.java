@@ -34,7 +34,10 @@ public class MainApplication implements CommandLineRunner {
 		if(ipoDataList != null && ipoDataList.size() > 0) {
 			messageText = notionUploader.uploader(ipoDataList);
 		} else {
-			messageText = "신규 IPO가 없습니다.";
+			StringBuffer sb = new StringBuffer();
+			sb.append("신규 IPO가 없습니다.");
+			ipoDataList.add(sb);
+			messageText = notionUploader.uploader(ipoDataList);
 		}
 
 		// NOTION URL 카카오톡으로 전송
